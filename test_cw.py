@@ -1,2 +1,3 @@
-import winsound
-winsound.Beep(300,2000)
+a = b = c = 10
+b += 2
+print(a, b, c)
