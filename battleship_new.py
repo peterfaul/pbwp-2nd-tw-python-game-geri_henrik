@@ -8,8 +8,8 @@ print("Welcome to Battleship 2.0!")
 ship_type_database = {4: "Carrier", 5: "Battleship", 3: "Cruiser", 2: "Destroyer", 1: "Rambo"}
 missmsg = ["Damn it, next time!", "Put on your glasses!", "Watch out!", "Missed...", "Buzadara"]
 hitmsg = ["Nice shot!", "You rock!", "It hurts!", "Ouch!", "Surefire"]
-player1 = input("Please state your name: ")
-player2 = input("Please state your name: ")
+player1 = input("Please enter your name: ")
+player2 = input("Please enter your name: ")
 os.system("clear")
 shoot_count_tracker = [0, 0]
 sunken_ship_tracker = [[], []]
@@ -36,7 +36,7 @@ def ship_placement(player, ship_type_database, start_grid):
                 ship_direction_input = input(
                     "Do you want to place your {0} horizontally or vertically? It occupies {1} coordinates.: ".format(
                         value, key))
-                beginning_coordinate_input = input("Beginning coordinates of your {0}: ".format(value))
+                beginning_coordinate_input = input("Type in the beginning coordinates of your {0}: ".format(value))
                 beginning_coordinate_key = beginning_coordinate_input[0]
                 beginning_coordinate_value = int(beginning_coordinate_input[1:]) - 1
 
@@ -90,21 +90,21 @@ def player_turn(start_grid, shoot_grid, player, tracker):
                     ship_num = int(start_grid[beginning_coordinate_key][beginning_coordinate_value].strip())
                     sunken_ship_tracker[tracker].append(ship_num)
                     if ship_num == sunken_ship_tracker[tracker].count(ship_num):
-                        print("You sunk {0}".format(ship_type_database[ship_num]))
+                        print("You have sunk the {0}".format(ship_type_database[ship_num]))
                     hit = True
                     shoot_count_tracker[tracker] += 1
                     if shoot_count_tracker[0] == 15:
-                        print("{0} winner pirate!".format(player1))
+                        print("{0} is the winner pirate!".format(player1))
                         raise SystemExit
                     elif shoot_count_tracker[1] == 15:
-                        print("{0} winner pirate!".format(player2))
+                        print("{0} is the winner pirate!".format(player2))
                         raise SystemExit
                     time.sleep(2)
                     os.system("clear")
                     continue
                 elif start_grid[beginning_coordinate_key][beginning_coordinate_value] != " 0 " \
                         and shoot_grid[beginning_coordinate_key][beginning_coordinate_value] == " X ":
-                    print ("You fucking bastard, you prick, you have already tried to shoot here!")
+                    print ("You have already shot there!")
                     hit = False
                     time.sleep(2)
                     os.system("clear")
@@ -120,7 +120,7 @@ def player_turn(start_grid, shoot_grid, player, tracker):
             except SystemExit:
                 sys.exit()
             except BaseException:
-                print("You fuck, you misstyped the coordinate")
+                print("You have just misstyped the coordinate, please enter another!")
                 time.sleep(2)
                 os.system("clear")
                 continue
