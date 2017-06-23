@@ -22,7 +22,7 @@ row_index_letter = list(string.ascii_lowercase[:10])
 def print_grid(current_grid):
     print("  " + "".join(top_line))
     for k, v in sorted(current_grid.items()):
-         print('{0}: {1}'.format(k,v))
+         print(k,v)
 
 def ship_placement(player, ship_type_database, start_grid):
     for key, value in sorted(ship_type_database.items(), reverse=True):

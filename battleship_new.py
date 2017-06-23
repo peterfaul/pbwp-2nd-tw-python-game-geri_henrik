@@ -5,11 +5,14 @@ import os
 import time
 
 print("Welcome to Battleship 2.0!")
+with open ("bs_logo.txt") as file:
+    for row in file:
+        print(row)
 ship_type_database = {4: "Carrier", 5: "Battleship", 3: "Cruiser", 2: "Destroyer", 1: "Rambo"}
 missmsg = ["Damn it, next time!", "Put on your glasses!", "Watch out!", "Missed...", "Buzadara"]
 hitmsg = ["Nice shot!", "You rock!", "It hurts!", "Ouch!", "Surefire"]
-player1 = input("Please enter your name: ")
-player2 = input("Please enter your name: ")
+player1 = input("Player1, please enter your name: ")
+player2 = input("Player2, please enter your name: ")
 os.system("clear")
 shoot_count_tracker = [0, 0]
 sunken_ship_tracker = [[], []]
@@ -94,9 +97,11 @@ def player_turn(start_grid, shoot_grid, player, tracker):
                     hit = True
                     shoot_count_tracker[tracker] += 1
                     if shoot_count_tracker[0] == 15:
+                        os.system("clear")
                         print("{0} is the winner pirate!".format(player1))
                         raise SystemExit
                     elif shoot_count_tracker[1] == 15:
+                        os.system("clear")
                         print("{0} is the winner pirate!".format(player2))
                         raise SystemExit
                     time.sleep(2)
