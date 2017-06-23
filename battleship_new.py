@@ -130,7 +130,7 @@ def player_turn(start_grid, shoot_grid, player, tracker):
                 os.system("clear")
                 continue
 
-
+########xx
 while True:
     player_turn(player2_start_grid, player1_shoot_grid, player1, 0)
     player_turn(player1_start_grid, player2_shoot_grid, player2, 1)
