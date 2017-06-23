@@ -7,7 +7,7 @@ import time
 while True:
     try:
         print("Welcome to Battleship 2.0!")
-        with open ("bs_logo.txt") as file:
+        with open("bs_logo.txt") as file:
             for row in file:
                 print(row)
         time.sleep(5)
@@ -26,12 +26,10 @@ while True:
         player2_shoot_grid = {key: [" 0 "] * 10 for key in string.ascii_lowercase[: 10]}
         row_index_letter = list(string.ascii_lowercase[:10])
 
-
         def print_grid(current_grid):
             print("   " + "".join(top_line))
             for k, v in sorted(current_grid.items()):
                 print('{0}: {1}'.format(k, v))
-
 
         def ship_placement(player, ship_type_database, start_grid):
             for key, value in sorted(ship_type_database.items(), reverse=True):
@@ -42,7 +40,8 @@ while True:
                         ship_direction_input = input(
                             "Do you want to place your {0} horizontally or vertically? It occupies {1} coordinates.: ".format(
                                 value, key))
-                        beginning_coordinate_input = input("Type in the beginning coordinates of your {0}: ".format(value))
+                        beginning_coordinate_input = input(
+                            "Type in the beginning coordinates of your {0}: ".format(value))
                         beginning_coordinate_key = beginning_coordinate_input[0]
                         beginning_coordinate_value = int(beginning_coordinate_input[1:]) - 1
 
@@ -53,7 +52,8 @@ while True:
                                 if " 0 " not in check_ship:
                                     raise ValueError
                                 else:
-                                    start_grid[beginning_coordinate_key][i + beginning_coordinate_value] = " " + str(key) + " "
+                                    start_grid[beginning_coordinate_key][i +
+                                                                         beginning_coordinate_value] = " " + str(key) + " "
                         elif ship_direction_input[0] == "v":
                             check_ship = []
                             for letter in row_index_letter[row_index_letter.index(
@@ -71,10 +71,8 @@ while True:
                         continue
                 os.system("clear")
 
-
         ship_placement(player1, ship_type_database, player1_start_grid)
         ship_placement(player2, ship_type_database, player2_start_grid)
-
 
         def player_turn(start_grid, shoot_grid, player, tracker):
             global shoot_count_tracker
@@ -132,7 +130,6 @@ while True:
                         time.sleep(2)
                         os.system("clear")
                         continue
-
 
         while True:
             player_turn(player2_start_grid, player1_shoot_grid, player1, 0)
